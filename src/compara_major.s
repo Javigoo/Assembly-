@@ -16,15 +16,15 @@ main:   daddui  R1,R0,10        ; R1 = 10  Counter
         dadd    R2,R0,R0        ; R2 = 0   Pointer
         dadd    R3,R0,R0        ; R3 = 0   Num
         ld      R6,X(R0)        ; R6 = X   Value
-        ld      R7,RES(R0)        ; R6 = RES Result
+        ld      R7,RES(R0)      ; R6 = RES Result
 
 loop:   ld      R4,A(R2)        ; R4 = A[R2]    Get value of A - (Iterate A)
 
-        slt     R5,R6,R4        ; If A[i]>X, R5=1
+        slt     R5,R6,R4        ; If A[i]>X, R5=1 else R5=0
         beqz    R5,skip         ; If R5 equal 0 go to skip
 
         daddi   R3,R3,1         ; NUM++ Increases the number of values greater than X
-        ;sd      R3,NUM(R0)     ; RES = R3 Save result
+        sd      R5,RES(R2)      ; RES[i]=1  (R5=1)
 
 skip:   daddi   R2,R2,8         ; R2 = R2+8  Increment pointer - (One byte)
         daddi   R1,R1,-1        ; R1 = R1-1  Decrement counter
