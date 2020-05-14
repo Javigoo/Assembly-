@@ -10,18 +10,20 @@ A:      .word 10, 2, 9, 12, 43, 152, 2, 4, 18, 3
 X:      .word 20
 NUM:    .word 0
 RES:    .word 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-
+        
         .text
-        daddi r1,r0,9   ; r1=9 (length of A - 1)
-        ld r2,X(r0)     ; r2=X
+main:   daddui  R1,R0,10        ; R1 = 10  Counter
+        dadd    R2,R0,R0        ; R2 = 0   Pointer
+        dadd    R3,R0,R0        ; R3 = 0   Result
 
-loop:                   ; do{
+loop:   ld      R4,A(R2)        ; R4 = A[R2]    Get value of A - (Iterate A)
 
-        ld r3,A(r1)
-        ld r2,RES(r3)
+        dadd    R3,R3,R4        ; Operacion a realizar - (Suma los elementos de A y los guarda en R3)
 
-        daddi r1,r1,-1  ; r1--
-        bnez r1, loop   ; }while(r1!=0)
+        daddi   R2,R2,8         ; R2 = R2+8  Increment pointer - (1 byte)
+        daddi   R1,R1,-1        ; R1 = R1-1  Decrement counter
+        bnez    R1,loop         ;
+  
+        sd      R3,NUM(R0)      ; RES = R3 Save result
 
-
-        halt            ;
+halt

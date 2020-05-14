@@ -4,7 +4,7 @@
 ;--------------------------
 		.data 
 values: .word 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ;64-bit integers 
-result: .space 8 
+result: .word 0 
 
 		.text 
 MAIN:   daddui  R1,R0,10 ;R1  10 
