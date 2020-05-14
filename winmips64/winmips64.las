@@ -1,1 +1,0 @@
-C:\Users\JaviG\Desktop\assembly\winmips64\MULT.S

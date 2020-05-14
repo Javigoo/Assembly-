@@ -1,4 +1,7 @@
-# Compiled files
-
+# Asm compiled files
 *.cod
 *.dat
+
+# Winmips64 compiled files
+*.ini
+*.las
