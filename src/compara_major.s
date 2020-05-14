@@ -17,7 +17,11 @@ RES:    .word 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 
 loop:                   ; do{
 
+        ld r3,A(r1)
+        ld r2,RES(r3)
+
         daddi r1,r1,-1  ; r1--
         bnez r1, loop   ; }while(r1!=0)
+
 
         halt            ;
