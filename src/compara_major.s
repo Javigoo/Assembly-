@@ -1,4 +1,6 @@
 ;******************************************************************************************
+;*** Authors: Francisco Javier Roig Gregorio and Pere Antoni Rollón Baiges              ***
+;***                                                                                    ***
 ;*** Recorre un vector d’enters A de 10 posicions, i determina quants valors són majors ***
 ;*** que un valor donat X. El nombre de valors majors que X serà emmagatzemat en una    ***
 ;*** variable NUM de memòria. El programa ha de generar a més un altre vector RES,      ***
@@ -23,8 +25,8 @@ loop:   ld      R4,A(R2)        ; R4 = A[R2]    Get value of A - (Iterate A)
         slt     R5,R6,R4        ; If A[i]>X, R5=1 else R5=0
         beqz    R5,skip         ; If R5 equal 0 go to skip
 
-        daddi   R3,R3,1         ; NUM++ Increases the number of values greater than X
         sd      R5,RES(R2)      ; RES[i]=1  (R5=1)
+        daddi   R3,R3,1         ; NUM++ Increases the number of values greater than X
 
 skip:   daddi   R2,R2,8         ; R2 = R2+8  Increment pointer - (One byte)
         daddi   R1,R1,-1        ; R1 = R1-1  Decrement counter
