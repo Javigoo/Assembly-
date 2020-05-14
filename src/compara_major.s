@@ -12,5 +12,12 @@ NUM:    .word 0
 RES:    .word 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 
         .text
-main:
-        halt
+        daddi r1,r0,9   ; r1=9 (length of A - 1)
+        ld r2,X(r0)     ; r2=X
+
+loop:                   ; do{
+
+        daddi r1,r1,-1  ; r1--
+        bnez r1, loop   ; }while(r1!=0)
+
+        halt            ;
