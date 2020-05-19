@@ -16,10 +16,10 @@ RES:    .word 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
         .text
 main:   daddui  R1,R0,10        ; R1 = 10  Counter
         dadd    R2,R0,R0        ; R2 = 0   Pointer
-        dadd    R3,R0,R0        ; R3 = 0   Num
-        ld      R4,X(R0)        ; R4 = X   Value
+        dadd    R3,R0,R0        ; R3 = 0   NUM
+        ld      R4,X(R0)        ; R4 = 20  X
 
-loop:   ld      R5,A(R2)        ; R5 = A[R2]    Get value of A - (Iterate A)
+loop:   ld      R5,A(R2)        ; R5 = A[R2]    Get value of A (Iterate A)
 
         slt     R6,R4,R5        ; If A[i]>X, R6=1 else R5=0
         beqz    R6,skip         ; If R6 equal 0 go to skip
@@ -27,7 +27,7 @@ loop:   ld      R5,A(R2)        ; R5 = A[R2]    Get value of A - (Iterate A)
         sd      R6,RES(R2)      ; RES[i]=1  (R6=1)
         daddi   R3,R3,1         ; NUM++ Increases the number of values greater than X
 
-skip:   daddi   R2,R2,8         ; R2 = R2+8  Increment pointer - (One byte)
+skip:   daddi   R2,R2,8         ; R2 = R2+8  Increment pointer (One byte)
         daddi   R1,R1,-1        ; R1 = R1-1  Decrement counter
         bnez    R1,loop         ; If counter not equal 0 go to loop
   
